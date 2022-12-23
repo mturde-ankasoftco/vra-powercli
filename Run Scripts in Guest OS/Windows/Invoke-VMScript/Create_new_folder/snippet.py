@@ -16,7 +16,7 @@ function handler($context, $inputs) {
     $vm = Get-VM -Name $vmName
     #Create a script
     Write-Host "Attempting to run commands to $vm..."
-    $remoteScript = "New-Item -Path ‘C:\Users\MuhammedTurde\TestFolder' -ItemType Directory"
+    $remoteScript = "New-Item -Path ‘C:\Users\MuhammedTurde\Test-Folder-001' -ItemType Directory"
     #Run a script
     $runRemoteScript = Invoke-VMScript -VM $vm -ScriptText $remoteScript -GuestUser $vmUsername -GuestPassword $vmPassword -ScriptType Powershell -Confirm:$false
     if ($runRemoteScript.ScriptOutput.Length -eq 0) {
