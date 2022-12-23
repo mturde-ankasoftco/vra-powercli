@@ -5,15 +5,15 @@ def handler(context, inputs):
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     # set variables
     vm_ip_address = inputs["addresses"][0][0]
-    vm_usr = inputs["vc_usr"]
-    vm_pwd = context.getSecret(inputs["vc_pwd"])
-    CreateFolder(vm_usr, vm_pwd, vm_ip_address)
+    vmUsername = inputs["vc_usr"]
+    vmPassword = context.getSecret(inputs["vc_pwd"])
+    CreateFolder(vmUsername, vmPassword, vm_ip_address)
 
-def CreateFolder(vm_usr, vm_pwd, vm_ip_address):
+def CreateFolder(vmUsername, vmPassword, vm_ip_address):
     # Connect to target using username/password authentication.
     ssh.connect(hostname=vm_ip_address, 
-                username=vm_usr, 
-                password=vm_pwd, 
+                username=vmUsername, 
+                password=vmPassword, 
                 look_for_keys=False)
     # Command to run on the target
     command = "mkdir test-folder-001"
