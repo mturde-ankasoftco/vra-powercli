@@ -3,7 +3,7 @@ import time
 def handler(context, inputs):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    # set variables
+    # set variables.
     vm_ip_address = inputs["addresses"][0][0]
     vmUsername = inputs["vc_usr"]
     vmPassword = context.getSecret(inputs["vc_pwd"])
